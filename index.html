@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Sign Up Form with validation</title>
+
+
+
+      <link rel="stylesheet" href="css/style.css">
+
+
+</head>
+
+
+
+<body>
+
+  <form action="login.html">
+    <h2>Already have an account</h2>
+  <input type="submit" value="LogIn" id="submit2"  >
+</form>
+
+
+<form  action="php/Registration.php" method="post">
+  <h2>Sign Up</h2>
+  <p>
+    <label for="userID" class="floatLabel">User ID</label>
+    <input id="userID" name="userID" type="text">
+    <span>User ID Already exists, please choose another</span>
+  </p>
+  <p>
+    <label for="userName" class="floatLabel">User Name</label>
+    <input id="userName" name="userName" type="text">
+  </p>
+  	<p>
+			<label for="email" class="floatLabel">Email</label>
+			<input id="email" name="email" type="text">
+		</p>
+		<p>
+			<label for="password" class="floatLabel">Password</label>
+			<input id="password" name="password" type="password">
+			<span>Enter a password longer than 8 characters</span>
+		</p>
+		<p>
+			<label for="confirm_password" class="floatLabel">Confirm Password</label>
+			<input id="confirm_password" name="confirm_password" type="password">
+			<span>Your passwords do not match</span>
+		</p>
+    <p>
+  <input type="submit" value="Create My Account" id="submit"  >
+  </p>
+	</form>
+
+
+
+
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <script  src="js/index.js"></script>
+  <script>
+
+  function submitData()
+  {
+
+  var userID =document.getElementById("userID").value;
+  var name = document.getElementById("userName").value;
+  var email = document.getElementById("email").value;
+  var password = document.getElementById("password").value;
+  // Returns successful data submission message when the entered information is stored in database.
+  var dataString = 'userID=' +userID+ '&userName=' + name + '&email=' + email + '&password=' + password ;
+  if (name == '' || email == '' || password == '') {
+  alert("Please Fill All Fields");
+  } else {
+  // AJAX code to submit form.
+  $.ajax({
+  type: "POST",
+  url: "php/Registration.php",
+  data: dataString,
+  cache: false,
+
+  });
+  }
+  return false;
+  }
+  </script>
+
+</body>
+
+</html>
